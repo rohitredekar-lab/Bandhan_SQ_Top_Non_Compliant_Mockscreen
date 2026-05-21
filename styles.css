@@ -1,0 +1,823 @@
+:root {
+    --theme-blue: #0e3054;
+    --theme-blue-hover: #0a223c;
+    --theme-red: #f03e22;
+    --text-dark: #2c3e50;
+    --text-muted: #7f8c8d;
+    --bg-light: #f8f9fa;
+    --bg-body: #f4f6f9;
+    --border-color: #dee2e6;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.02);
+    --card-shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.05);
+    --transition-speed: 0.2s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-dark);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Navigation Bar */
+.nav-bar {
+    height: 55px;
+    background-color: #ffffff;
+    border-top: 3px solid #0056b3; /* Top thin blue accent line */
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    z-index: 100;
+    flex-shrink: 0;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Abstract corporate logo matching the photo */
+.logo-icon {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #007bff, #00a8a8);
+    border-radius: 3px;
+    transform: rotate(45deg);
+}
+
+.logo-text {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--theme-blue);
+    letter-spacing: -0.3px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #495057;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: all var(--transition-speed);
+}
+
+.nav-item:hover {
+    background-color: var(--bg-light);
+    color: var(--theme-blue);
+}
+
+.nav-item i {
+    color: #17a2b8; /* Teal/Blue-Green icons in menu */
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile {
+    font-size: 1.6rem;
+    color: #6c757d;
+    cursor: pointer;
+    transition: color var(--transition-speed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #dee2e6;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+}
+
+.user-profile:hover {
+    color: var(--theme-blue);
+    border-color: var(--theme-blue);
+}
+
+/* Dashboard Container Split Layout */
+.dashboard-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    padding: 16px;
+    gap: 16px;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    box-shadow: var(--card-shadow);
+}
+
+.sidebar-header {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-header h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.reset-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--theme-red);
+    font-size: 0.85rem;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed);
+}
+
+.reset-btn:hover {
+    background-color: #ffe8e6;
+    transform: rotate(-180deg);
+}
+
+.sidebar-scrollable {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#filter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.filter-group label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #495057;
+}
+
+.filter-group select,
+.filter-group input {
+    width: 100%;
+    padding: 4px 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    color: #495057;
+    outline: none;
+    background-color: #ffffff;
+    height: 28px;
+    transition: border-color var(--transition-speed);
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    border-color: var(--theme-blue);
+}
+
+.filter-row {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-row .half {
+    flex: 1;
+}
+
+.select-clear-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.select-clear-wrapper select {
+    padding-right: 25px;
+}
+
+.clear-select {
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: bold;
+    user-select: none;
+}
+
+.clear-select:hover {
+    color: var(--theme-red);
+}
+
+/* Excel Control Center Inside Sidebar */
+.excel-control-card {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.excel-control-card h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--theme-blue);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.excel-control-card h4 i {
+    color: #28a745;
+}
+
+.excel-desc {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.3;
+}
+
+.upload-dropzone {
+    border: 2px dashed #ced4da;
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 12px 8px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: all var(--transition-speed);
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.dragover {
+    border-color: #28a745;
+    background-color: #f4faf6;
+}
+
+.upload-dropzone i {
+    font-size: 1.5rem;
+    color: #28a745;
+}
+
+.upload-dropzone span {
+    font-size: 0.7rem;
+    color: var(--text-dark);
+}
+
+.browse-link {
+    color: #28a745;
+    text-decoration: underline;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #e8f5e9;
+    border: 1px solid #c8e6c9;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    color: #2e7d32;
+    word-break: break-all;
+}
+
+.template-btn {
+    width: 100%;
+    font-size: 0.75rem;
+    justify-content: center;
+    padding: 6px 10px;
+}
+
+/* Sidebar Buttons Row */
+.sidebar-buttons {
+    padding: 8px 0 0 0;
+    border-top: none;
+    display: flex;
+    gap: 8px;
+    background-color: #ffffff;
+    flex-shrink: 0;
+    margin-top: 10px;
+}
+
+.sidebar-buttons .btn {
+    flex: 1;
+    justify-content: center;
+    padding: 5px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    height: 28px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    text-align: center;
+}
+
+/* Clean Blue Outline Buttons for Sidebar matching photo */
+.btn-primary {
+    background-color: #ffffff;
+    color: #0056b3;
+    border: 1px solid #0056b3;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    color: #ffffff;
+}
+
+.btn-outline {
+    background-color: #ffffff;
+    color: #0056b3;
+    border: 1px solid #0056b3;
+}
+
+.btn-outline:hover {
+    background-color: #f1f7ff;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: var(--theme-blue);
+    border: 1px solid var(--theme-blue);
+}
+
+.btn-secondary:hover {
+    background-color: #eef3f8;
+}
+
+/* Main Panel Styling */
+.main-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Tabs Navigation matching screenshot style */
+.tabs-nav {
+    display: flex;
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 8px 16px 0 16px;
+    flex-shrink: 0;
+    gap: 4px;
+}
+
+.tab-item {
+    padding: 10px 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+}
+
+.tab-item:hover {
+    color: var(--theme-blue);
+}
+
+.tab-item.active {
+    color: var(--text-dark);
+    font-weight: 600;
+    background-color: var(--bg-body);
+    border-color: var(--border-color);
+    position: relative;
+    z-index: 5;
+}
+
+/* Content Scrollable Container */
+.dashboard-content-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dashboard-grid-row {
+    display: flex;
+    gap: 20px;
+}
+
+.dashboard-grid-row.two-cols > * {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Dashboard Widget Cards */
+.dashboard-card {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    padding: 24px 16px 16px 16px;
+    transition: box-shadow var(--transition-speed);
+}
+
+.dashboard-card:hover {
+    box-shadow: var(--card-shadow-hover);
+}
+
+.dashboard-card.full-width {
+    width: 100%;
+}
+
+/* Status Wise card — grows with dynamic chart height */
+.dashboard-card.chart-card.full-width {
+    overflow: visible;
+    height: auto;
+}
+
+/* Card Badge Tag (Corporate Blue) */
+.card-tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--theme-blue);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 6px 0 6px 0;
+}
+
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    margin-top: 4px;
+}
+
+.card-header-row .card-tag {
+    position: static;
+    border-radius: 3px;
+    padding: 3px 8px;
+}
+
+/* Table Download Excel Button (Corporate Blue) */
+.btn-excel-download {
+    background-color: var(--theme-blue);
+    color: #ffffff;
+    border: 1px solid var(--theme-blue);
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 3px;
+}
+
+.btn-excel-download:hover {
+    background-color: var(--theme-blue-hover);
+    border-color: var(--theme-blue-hover);
+}
+
+/* Chart Canvas Sizing */
+.chart-main-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--theme-blue);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.chart-container {
+    position: relative;
+    height: 220px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Status Wise horizontal bar — override flex centering so Chart.js fills the box */
+.horizontal-bar-container {
+    display: block !important;
+    height: 280px; /* overridden inline by JS based on zone count */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Data Tables */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+    margin-top: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.data-table th {
+    background-color: var(--theme-blue); /* Dark Blue Header matching screenshot */
+    color: #ffffff;
+    font-weight: 700;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    user-select: none;
+}
+
+.data-table th.sortable {
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+.data-table th.sortable:hover {
+    background-color: var(--theme-blue-hover);
+}
+
+.data-table th.sortable i {
+    margin-left: 4px;
+    font-size: 0.7rem;
+    color: #a0aec0;
+}
+
+.data-table td {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    color: #333333;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* Highlight style for total row (Pan India) */
+.data-table tbody tr.highlight-row {
+    background-color: #dedede !important;
+    font-weight: 700;
+}
+
+.data-table tbody tr.highlight-row td {
+    color: var(--theme-blue);
+}
+
+/* Linked Text ID in Breached ATR Table */
+.details-link {
+    color: #0056b3;
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.details-link:hover {
+    color: var(--theme-red);
+}
+
+/* Modal Overlay Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(14, 48, 84, 0.4);
+    backdrop-filter: blur(3px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: #ffffff;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-15px);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    background: var(--theme-blue);
+    color: #ffffff;
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.close-modal {
+    cursor: pointer;
+    font-size: 1.4rem;
+    color: #e2e8f0;
+    line-height: 1;
+    transition: color var(--transition-speed);
+}
+
+.close-modal:hover {
+    color: var(--theme-red);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+/* Details Grid in Modal */
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 20px;
+    margin-bottom: 15px;
+}
+
+.details-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.detail-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.detail-val {
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.detail-val.block-text {
+    line-height: 1.4;
+    background-color: var(--bg-light);
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    margin-top: 4px;
+    display: block;
+    font-size: 0.8rem;
+}
+
+.details-full-width {
+    margin-top: 12px;
+}
+
+.modal-footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.success-icon-wrapper i {
+    animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes scaleUp {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Rules */
+@media (max-width: 1024px) {
+    .dashboard-grid-row.two-cols {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+        overflow: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .sidebar-scrollable {
+        max-height: 350px;
+    }
+
+    .main-panel {
+        height: auto;
+        overflow: visible;
+    }
+
+    .dashboard-content-scroll {
+        overflow: visible;
+    }
+}
